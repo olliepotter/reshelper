@@ -7,12 +7,32 @@ import (
 	"time"
 )
 
+// ErrorMessage defines a structure for handling errors
+type ErrorMessage struct {
+	Status   int    `json:"status_code"`
+	AppCode  string `json:"app_code"`
+	Message  string `json:"message"`
+	Remedies string `json:"potential_remedies"`
+}
+
 // Message defines a format to send JSON messages
 type Message struct {
 	Status   int    `json:"status_code"`
 	AppCode  string `json:"app_code"`
 	Message  string `json:"message"`
 	Remedies string `json:"potential_remedies"`
+}
+
+// HardError sends 500 and logs a server error to stdout
+func HardError(w http.ResponseWriter, em ErrorMessage) {
+
+	// Send response
+	w.WriteHeader(http.StatusInternalServerError)
+
+	// Log
+	timestamp := time.Now().Format("2006-01-02 15:04:05")
+	fmt.Printf("%s :: %d [%s] %s\n", timestamp, em.Status, em.AppCode, em.Message)
+
 }
 
 // SendMessage sends informational response message and logs it
@@ -25,7 +45,7 @@ func SendMessage(w http.ResponseWriter, rm Message) {
 
 	// Log
 	timestamp := time.Now().Format("2006-01-02 15:04:05")
-	fmt.Printf("%s :: %d [%s] %s\n", timestamp, rm.Status, rm.AppCode, rm.Message)
+	fmt.Printf("%s :: %d [%s] %s\n", timestamp, em.Status, em.AppCode, em.Message)
 
 }
 
