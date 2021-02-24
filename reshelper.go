@@ -9,9 +9,8 @@ import (
 
 // ErrorMessage defines a structure for handling errors
 type ErrorMessage struct {
-	AppCode  string `json:"app_code"`
-	Message  string `json:"message"`
-	Remedies string `json:"potential_remedies"`
+	AppCode string `json:"app_code"`
+	Message string `json:"message"`
 }
 
 // Message defines a format to send JSON messages
