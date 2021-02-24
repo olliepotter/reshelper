@@ -9,7 +9,6 @@ import (
 
 // ErrorMessage defines a structure for handling errors
 type ErrorMessage struct {
-	Status   int    `json:"status_code"`
 	AppCode  string `json:"app_code"`
 	Message  string `json:"message"`
 	Remedies string `json:"potential_remedies"`
@@ -31,7 +30,7 @@ func HardError(w http.ResponseWriter, em ErrorMessage) {
 
 	// Log
 	timestamp := time.Now().Format("2006-01-02 15:04:05")
-	fmt.Printf("%s :: %d [%s] %s\n", timestamp, em.Status, em.AppCode, em.Message)
+	fmt.Printf("%s :: %d [%s] %s\n", timestamp, http.StatusInternalServerError, em.AppCode, em.Message)
 
 }
 
