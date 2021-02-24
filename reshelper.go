@@ -45,7 +45,7 @@ func SendMessage(w http.ResponseWriter, rm Message) {
 
 	// Log
 	timestamp := time.Now().Format("2006-01-02 15:04:05")
-	fmt.Printf("%s :: %d [%s] %s\n", timestamp, em.Status, em.AppCode, em.Message)
+	fmt.Printf("%s :: %d [%s] %s\n", timestamp, rm.Status, rm.AppCode, rm.Message)
 
 }
 
