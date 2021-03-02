@@ -60,4 +60,4 @@ var ExternalRequestFailed = "EXT_REQUEST_FAIL"
 var MissingKey = "MISSING_KEY"
 
 // ParseError - Error when parsing
-var ParseError = "PARSE_ERROR"
+var ParseError = "PARSE_ERR"
